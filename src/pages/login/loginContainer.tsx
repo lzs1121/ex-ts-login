@@ -1,9 +1,19 @@
-import * as React from 'react';
+import { connect } from 'react-redux';
 
-export const LoginComponent = () => {
-  return (
-    <div>
-      <h2>Login Form</h2>
-    </div>
-  );
+import { LoginComponent } from './login';
+import { loginRequestStartedAction } from './actions/loginRequestStarted';
+
+const mapStateToProps = () => {
+  return {};
 };
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    performLogin: () => dispatch(loginRequestStartedAction())
+  };
+};
+
+export const LoginContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginComponent);
